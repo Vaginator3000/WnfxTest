@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">WnfxTest</string>
+    <string name="title_items">Items</string>
+    <string name="title_cart">Cart</string>
+
+    <string name="goods_item_rating">%1$d★</string>
+    <string name="goods_item_price">%1$d₽</string>
+</resources>
