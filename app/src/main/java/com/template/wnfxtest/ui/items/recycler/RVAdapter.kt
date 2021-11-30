@@ -3,6 +3,7 @@ package com.template.wnfxtest.ui.items.recycler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
@@ -34,7 +35,6 @@ class RVAdapter(private val goodsList: List<GoodModel>) : RecyclerView.Adapter<R
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val currentItem = goodsList[position]
-    //    holder.bind(currentItem = currentItem)
 
         //item_loading
         Picasso.get()
@@ -55,6 +55,7 @@ class RVAdapter(private val goodsList: List<GoodModel>) : RecyclerView.Adapter<R
         holder.tvPrice.text = "${currentItem.price}₽"
         holder.tvRating.text = "${currentItem.rating}★"
         //не могу понять как подтянуть сюда строковый ресурс
+        holder.addTocartBtn.setOnClickListener {  }
     }
 
     override fun getItemCount() =
@@ -67,9 +68,8 @@ class RVAdapter(private val goodsList: List<GoodModel>) : RecyclerView.Adapter<R
         val tvInfo: TextView = itemView.findViewById(R.id.recycler_good_item_info)
         val tvRating: TextView = itemView.findViewById(R.id.recycler_good_item_rating)
         val cpv: CircularProgressView = itemView.findViewById(R.id.item_loading)
+        val addTocartBtn: ImageButton = itemView.findViewById(R.id.recycler_good_item_add_cart)
 
-     //   fun bind(currentItem: GoodModel) {
-     //   }
         init {
             itemView.setOnClickListener {
                 listener.onItemClick(position = absoluteAdapterPosition)

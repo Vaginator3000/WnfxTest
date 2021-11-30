@@ -5,4 +5,10 @@
 
     <string name="goods_item_rating">%1$d★</string>
     <string name="goods_item_price">%1$d₽</string>
+
+    <string name="toolbar_sort_title">Сортировка</string>
+    <string name="toolbar_sort_by_up_price">Возрастание цены</string>
+    <string name="toolbar_sort_by_down_price">Убывание цены</string>
+    <string name="toolbar_sort_by_up_rating">Возрастание рейтинга</string>
+    <string name="toolbar_sort_by_down_rating">Убывание рейтинга</string>
 </resources>

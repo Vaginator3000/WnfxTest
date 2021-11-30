@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <group
+        android:id="@+id/sort_btn"
+        android:icon="@drawable/ic_sort"
+        android:title="@string/toolbar_sort_title">
+        <item
+            android:id="@+id/sort_by_up_price"
+            android:title="@string/toolbar_sort_by_up_price" />
+        <item
+            android:id="@+id/sort_by_down_price"
+            android:title="@string/toolbar_sort_by_down_price" />
+        <item
+            android:id="@+id/sort_by_up_rating"
+            android:title="@string/toolbar_sort_by_up_rating" />
+        <item
+            android:id="@+id/sort_by_down_rating"
+            android:title="@string/toolbar_sort_by_down_rating" />
+
+    </group>
+
+</menu>
+
+
+<!--
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/sort_btn"
+        android:title="@string/toolbar_sort_title"
+        android:icon="@drawable/ic_sort"
+        app:showAsAction="always">
+        <menu >
+            <item
+                android:id="@+id/sort_by_up_price"
+                android:title="@string/toolbar_sort_by_up_price" />
+            <item
+                android:id="@+id/sort_by_down_price"
+                android:title="@string/toolbar_sort_by_down_price" />
+            <item
+                android:id="@+id/sort_by_up_rating"
+                android:title="@string/toolbar_sort_by_up_rating" />
+            <item
+                android:id="@+id/sort_by_down_rating"
+                android:title="@string/toolbar_sort_by_down_rating" />
+        </menu>
+    </item>
+</menu>-->

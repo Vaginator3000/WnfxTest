@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.liveData
 import com.template.data.repository.GoodsRepositoryImpl
 import com.template.domain.usecase.GetGoodsUseCase
+import com.template.domain.usecase.SortGoodsUseCase
 import com.template.utils.Resource
 import kotlinx.coroutines.Dispatchers
 
