@@ -33,7 +33,6 @@
     <Button
         android:id="@+id/cart_fragment_btn"
         android:text="100₽"
-        tools:text="100₽"
         android:textSize="@dimen/recycler_item_info"
         android:textColor="@color/black"
         android:background="@drawable/round_btn"

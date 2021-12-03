@@ -12,17 +12,26 @@ class SharedPrefsCartRepositoryImpl(context: Context) : CartRepository {
         return sharedPrefsCart.getGoodsInCart()
     }
 
+    override fun incGoodInCart(goodItem: GoodModelCart) {
+        sharedPrefsCart.incGoodInCart(goodToIncrease = goodItem)
+    }
+
+    override fun redGoodInCart(goodItem: GoodModelCart) {
+        sharedPrefsCart.redGoodInCart(goodToReduce = goodItem)
+    }
+
     override fun addGoodToCart(goodItem: GoodModelCart) {
         val goodsList =
             (sharedPrefsCart.getGoodsInCart() ?: mutableListOf()) as MutableList<GoodModelCart>
 
-        if (goodsList.contains(goodItem)) {
+        if (goodsList.map{ it.good }.contains(goodItem.good)) {
+            val index = goodsList.map{ it.good }.indexOf(goodItem.good)
+
             val newItem = GoodModelCart(
                 good = goodItem.good,
-                amount = goodItem.amount + 1
+                amount = goodsList[index].amount + 1
             )
-            val index = goodsList.indexOf(goodItem)
-            goodsList.remove(goodItem)
+            goodsList.removeAt(index)
             goodsList.add(index, newItem)
         } else
             goodsList.add(goodItem)

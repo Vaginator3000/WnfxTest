@@ -23,4 +23,32 @@ class SharedPrefsCart(context: Context)  {
             .putString("LIST", gson.toJson(goods))
             .apply()
     }
+
+    fun incGoodInCart(goodToIncrease: GoodModelCart) {
+        getGoodsInCart() ?: return
+        val goods = getGoodsInCart() as MutableList
+        val index = goods.indexOf(goodToIncrease)
+
+        val newGood = GoodModelCart(
+            amount = goodToIncrease.amount + 1,
+            good = goodToIncrease.good
+        )
+
+        goods[index] = newGood
+        saveGoodsToCart(goods)
+    }
+
+    fun redGoodInCart(goodToReduce: GoodModelCart) {
+        getGoodsInCart() ?: return
+        val goods = getGoodsInCart() as MutableList
+        val index = goods.indexOf(goodToReduce)
+
+        val newGood = GoodModelCart(
+            amount = if (goodToReduce.amount == 1) 1 else goodToReduce.amount - 1,
+            good = goodToReduce.good
+        )
+
+        goods[index] = newGood
+        saveGoodsToCart(goods)
+    }
 }

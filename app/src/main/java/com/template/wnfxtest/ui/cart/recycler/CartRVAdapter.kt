@@ -32,7 +32,7 @@ class CartRVAdapter(val goodsInCart: MutableList<GoodModelCart>) : RecyclerView.
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val itemView = LayoutInflater.from(parent.context).inflate(R.layout.cart_fragment_recycler_item, parent, false)
-        return ViewHolder(itemView)
+        return ViewHolder(itemView, incAmountClickListener, redAmountClickListener)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -58,7 +58,7 @@ class CartRVAdapter(val goodsInCart: MutableList<GoodModelCart>) : RecyclerView.
         holder.tvRating.text = "${currentItem.rating}★"
         holder.tvAmount.text = goodsInCart[position].amount.toString()
 
-        holder.incAmountBtn.setOnClickListener {
+        /*holder.incAmountBtn.setOnClickListener {
             val newItem = GoodModelCart(
                 good = currentItem,
                 amount = goodsInCart[position].amount + 1
@@ -78,13 +78,13 @@ class CartRVAdapter(val goodsInCart: MutableList<GoodModelCart>) : RecyclerView.
                 goodsInCart.add(position, newItem)
                 notifyDataSetChanged()
             }
-        }
+        }*/
     }
 
     override fun getItemCount() =
         goodsInCart.size
 
-    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    class ViewHolder(itemView: View, incAmountClickListener: OnClickListener, redAmountClickListener: OnClickListener) : RecyclerView.ViewHolder(itemView) {
         val img: ImageView = itemView.findViewById(R.id.cart_fragment_item_img)
         val tvTitle: TextView = itemView.findViewById(R.id.cart_fragment_item_title)
         val tvPrice: TextView = itemView.findViewById(R.id.cart_fragment_item_price)
@@ -95,9 +95,9 @@ class CartRVAdapter(val goodsInCart: MutableList<GoodModelCart>) : RecyclerView.
         val incAmountBtn: Button = itemView.findViewById(R.id.cart_fragment_amount_increase)
         val redAmountBtn: Button = itemView.findViewById(R.id.cart_fragment_amount_reduce)
 
-       /* init {
+       init {
             incAmountBtn.setOnClickListener { incAmountClickListener.onClick(absoluteAdapterPosition) }
             redAmountBtn.setOnClickListener { redAmountClickListener.onClick(absoluteAdapterPosition) }
-        }*/
+        }
     }
 }
