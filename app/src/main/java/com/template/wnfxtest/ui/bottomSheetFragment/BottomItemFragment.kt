@@ -39,7 +39,6 @@ class BottomItemFragment(private val currentItem: GoodModel) : BottomSheetDialog
     private fun setData() {
         Picasso.get().load(currentItem.imageurl).into(binding.bSheetImg, object : Callback {
             override fun onSuccess() {
-                Toast.makeText(this@BottomItemFragment.context, "Yes", Toast.LENGTH_SHORT).show()
             }
 
             override fun onError(e: Exception?) {

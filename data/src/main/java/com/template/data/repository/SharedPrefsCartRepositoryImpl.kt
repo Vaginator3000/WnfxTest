@@ -1,27 +1,39 @@
 package com.template.data.repository
 
-import android.app.Activity
 import android.content.Context
-import android.content.Context.MODE_PRIVATE
-import android.content.SharedPreferences
-import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
 import com.template.data.sharedPrefsCart.SharedPrefsCart
 import com.template.domain.repository.CartRepository
-import com.template.models.GoodModel
+import com.template.models.GoodModelCart
 
 class SharedPrefsCartRepositoryImpl(context: Context) : CartRepository {
-    val sharedPrefsCart = SharedPrefsCart(context)
+    private val sharedPrefsCart = SharedPrefsCart(context)
 
-    override fun addGoodToCart(goodItem: GoodModel) {
-        val goodsList = sharedPrefsCart.getGoodsIdsInCart() as MutableList<GoodModel>
-        goodsList.add(goodItem)
+    override fun getGoodsInCart(): List<GoodModelCart>? {
+        return sharedPrefsCart.getGoodsInCart()
+    }
+
+    override fun addGoodToCart(goodItem: GoodModelCart) {
+        val goodsList =
+            (sharedPrefsCart.getGoodsInCart() ?: mutableListOf()) as MutableList<GoodModelCart>
+
+        if (goodsList.contains(goodItem)) {
+            val newItem = GoodModelCart(
+                good = goodItem.good,
+                amount = goodItem.amount + 1
+            )
+            val index = goodsList.indexOf(goodItem)
+            goodsList.remove(goodItem)
+            goodsList.add(index, newItem)
+        } else
+            goodsList.add(goodItem)
+
         sharedPrefsCart.saveGoodsToCart(goodsList)
 
     }
 
-    override fun removeGoodFromCart(goodItem: GoodModel) {
-        val goodsList = sharedPrefsCart.getGoodsIdsInCart() as MutableList<GoodModel>
+    override fun removeGoodFromCart(goodItem: GoodModelCart) {
+        sharedPrefsCart.getGoodsInCart() ?: return
+        val goodsList = sharedPrefsCart.getGoodsInCart() as MutableList<GoodModelCart>
         goodsList.remove(goodItem)
         sharedPrefsCart.saveGoodsToCart(goodsList)
     }

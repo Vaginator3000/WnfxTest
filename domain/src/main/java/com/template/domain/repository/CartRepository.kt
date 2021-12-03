@@ -1,8 +1,9 @@
 package com.template.domain.repository
 
-import com.template.models.GoodModel
+import com.template.models.GoodModelCart
 
 interface CartRepository {
-    fun addGoodToCart(goodItem: GoodModel)
-    fun removeGoodFromCart(goodItem: GoodModel)
+    fun addGoodToCart(goodItem: GoodModelCart)
+    fun removeGoodFromCart(goodItem: GoodModelCart)
+    fun getGoodsInCart() : List<GoodModelCart>?
 }

@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">WnfxTest</string>
+
     <string name="title_items">Items</string>
     <string name="title_cart">Cart</string>
 
@@ -11,4 +12,6 @@
     <string name="toolbar_sort_by_down_price">Убывание цены</string>
     <string name="toolbar_sort_by_up_rating">Возрастание рейтинга</string>
     <string name="toolbar_sort_by_down_rating">Убывание рейтинга</string>
+
+    <string name="cart_is_empty">Корзина пуста!</string>
 </resources>

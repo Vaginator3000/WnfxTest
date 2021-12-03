@@ -7,7 +7,7 @@
     tools:context=".ui.items.ItemsFragment">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_goods_list"
+        android:id="@+id/items_fragment_recycler"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -18,7 +18,7 @@
     </androidx.recyclerview.widget.RecyclerView>
 
     <com.github.rahatarmanahmed.cpv.CircularProgressView
-        android:id="@+id/goods_loading"
+        android:id="@+id/items_fragment_loading"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

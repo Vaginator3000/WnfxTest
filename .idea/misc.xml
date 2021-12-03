@@ -7,10 +7,13 @@
         <entry key="..\:/Android/WnfxTest/app/src/main/res/drawable/ic_cart.xml" value="0.30925925925925923" />
         <entry key="..\:/Android/WnfxTest/app/src/main/res/drawable/ic_dashboard_black_24dp.xml" value="0.30925925925925923" />
         <entry key="..\:/Android/WnfxTest/app/src/main/res/drawable/ic_home_black_24dp.xml" value="0.30925925925925923" />
+        <entry key="..\:/Android/WnfxTest/app/src/main/res/drawable/round_btn.xml" value="0.30833333333333335" />
         <entry key="..\:/Android/WnfxTest/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/Android/WnfxTest/app/src/main/res/layout/bottom_sheet_fragment.xml" value="0.25" />
+        <entry key="..\:/Android/WnfxTest/app/src/main/res/layout/cart_fragment_recycler_item.xml" value="0.36923076923076925" />
         <entry key="..\:/Android/WnfxTest/app/src/main/res/layout/fragment_cart.xml" value="0.2760416666666667" />
         <entry key="..\:/Android/WnfxTest/app/src/main/res/layout/fragment_items.xml" value="0.2109375" />
+        <entry key="..\:/Android/WnfxTest/app/src/main/res/layout/items_fragment_recycler_item.xml" value="0.36923076923076925" />
         <entry key="..\:/Android/WnfxTest/app/src/main/res/layout/recycler_good_item.xml" value="0.33" />
         <entry key="..\:/Android/WnfxTest/app/src/main/res/menu/bottom_nav_menu.xml" value="0.33" />
         <entry key="..\:/Android/WnfxTest/app/src/main/res/menu/toolbar_sort_menu.xml" value="0.2760416666666667" />

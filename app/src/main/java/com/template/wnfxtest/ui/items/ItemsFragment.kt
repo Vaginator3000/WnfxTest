@@ -1,27 +1,20 @@
 package com.template.wnfxtest.ui.items
 
 import android.os.Bundle
-import android.text.Html
-import android.util.Log
 import android.view.*
-import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.CreateMethod
 import by.kirich1409.viewbindingdelegate.viewBinding
-import com.squareup.picasso.Callback
-import com.squareup.picasso.Picasso
 import com.template.models.GoodModel
 import com.template.utils.SortBy
 import com.template.utils.Status
 import com.template.wnfxtest.R
 import com.template.wnfxtest.databinding.FragmentItemsBinding
 import com.template.wnfxtest.ui.bottomSheetFragment.BottomItemFragment
-import com.template.wnfxtest.ui.items.recycler.RVAdapter
-import java.lang.Exception
+import com.template.wnfxtest.ui.items.recycler.ItemsRVAdapter
 
 class ItemsFragment : Fragment() {
     private val binding: FragmentItemsBinding by viewBinding(CreateMethod.INFLATE)
@@ -29,7 +22,7 @@ class ItemsFragment : Fragment() {
     private val itemsViewModel by lazy { ViewModelProvider(this).get(ItemsViewModel::class.java) }
 
     private val layoutManager by lazy { LinearLayoutManager(requireContext()) }
-    private lateinit var adapter: RVAdapter
+    private lateinit var adapter: ItemsRVAdapter
 
     private var goodsList: List<GoodModel>? = null
 
@@ -77,7 +70,28 @@ class ItemsFragment : Fragment() {
             }
         })
 
+
         return binding.root
+    }
+
+    private fun setupRView(list: List<GoodModel>) {
+        adapter = ItemsRVAdapter(list)
+        adapter.setOnItemClickListener(object : ItemsRVAdapter.OnItemClickListener {
+            override fun onItemClick(position: Int) {
+                val currentItem = list[position]
+                val bottomFragment = BottomItemFragment(currentItem = currentItem)
+
+                bottomFragment.show(parentFragmentManager, "tag")
+            }
+        })
+        adapter.setOnAddToCartClickListener(object : ItemsRVAdapter.OnClickListener {
+            override fun onClick(position: Int) {
+                val currentItem = list[position]
+                itemsViewModel.addToCart(currentItem)
+            }
+        })
+        binding.itemsFragmentRecycler.adapter = adapter
+        binding.itemsFragmentRecycler.layoutManager = layoutManager
     }
 
     // оставил сортировку здесь, т.к. не знаю где она по правильному долэна находиться
@@ -95,28 +109,14 @@ class ItemsFragment : Fragment() {
         }
     }
 
-    private fun setupRView(list: List<GoodModel>) {
-        adapter = RVAdapter(list)
-        adapter.setOnItemClickListener(object : RVAdapter.OnItemClickListener {
-            override fun onItemClick(position: Int) {
-                val currentItem = list[position]
-                val bottomFragment = BottomItemFragment(currentItem = currentItem)
-
-                bottomFragment.show(parentFragmentManager, "tag")
-            }
-        })
-        binding.recyclerGoodsList.adapter = adapter
-        binding.recyclerGoodsList.layoutManager = layoutManager
-    }
-
     private fun showOrHideLoadingProcess(hide: Boolean) {
         with(binding) {
             if (hide) {
-                recyclerGoodsList.visibility = View.GONE
-                goodsLoading.visibility = View.VISIBLE
+                itemsFragmentRecycler.visibility = View.GONE
+                itemsFragmentLoading.visibility = View.VISIBLE
             } else {
-                recyclerGoodsList.visibility = View.VISIBLE
-                goodsLoading.visibility = View.GONE
+                itemsFragmentRecycler.visibility = View.VISIBLE
+                itemsFragmentLoading.visibility = View.GONE
             }
         }
     }
